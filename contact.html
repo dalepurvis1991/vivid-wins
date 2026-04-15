@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vivid Wins Pokémon Raffle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 100%);
+        }
+
+        header {
+            background: #1F2937;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .page-title {
+            background: #1F2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #F3F4F6;
+            border-radius: 5px;
+        }
+
+        .contact-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1F2937;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #FFD700;
+            padding-left: 1rem;
+        }
+
+        .form-section {
+            background: #F3F4F6;
+            padding: 2rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1F2937;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-button {
+            background: #FFD700;
+            color: #1F2937;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .facebook-section {
+            background: #E7F3FF;
+            border-left: 4px solid #1877F2;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .facebook-section h3 {
+            color: #1877F2;
+            margin-bottom: 1rem;
+        }
+
+        .facebook-section a {
+            color: #1877F2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .facebook-section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #1F2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎮 Vivid Wins</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-title">
+        <h1>Contact Us</h1>
+        <p>Get in touch - we'd love to hear from you!</p>
+    </section>
+
+    <div class="container">
+        <h2>Get In Touch</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="emoji">📧</div>
+                <h3>Email</h3>
+                <p>support@vivid-wins.co.uk</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="emoji">👥</div>
+                <h3>Facebook</h3>
+                <p><a href="https://www.facebook.com">Message us on Facebook</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="emoji">⏰</div>
+                <h3>Response Time</h3>
+                <p>We aim to respond within 24-48 hours</p>
+            </div>
+        </div>
+
+        <div class="facebook-section">
+            <h3>📱 Fastest Way to Reach Us</h3>
+            <p>For the quickest response about raffle entries and prize claims, <a href="https://www.facebook.com">message us directly on Facebook</a>. We monitor our Facebook page throughout the day during raffle periods.</p>
+        </div>
+
+        <h2>Send us a Message</h2>
+        <div class="form-section">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                alert('Thanks for reaching out, ' + name + '! We\'ll get back to you soon. Please also follow our Facebook page for the fastest updates!');
+                this.reset();
+            });
+        </script>
+
+        <h2>FAQ</h2>
+        <div style="background: #F3F4F6; padding: 1.5rem; border-radius: 5px;">
+            <h3 style="color: #1F2937; margin-bottom: 1rem;">When are raffles held?</h3>
+            <p>Raffle schedules are announced on our Facebook page. Follow us to stay updated on upcoming events.</p>
+
+            <h3 style="color: #1F2937; margin: 1.5rem 0 1rem 0;">How are winners selected?</h3>
+            <p>Winners are selected randomly and fairly. The selection process is transparent and announced on Facebook.</p>
+
+            <h3 style="color: #1F2937; margin: 1.5rem 0 1rem 0;">What if I win?</h3>
+            <p>Winners are notified via Facebook. You'll have 7 days to respond and claim your prize. Contact us immediately if you've won!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vivid Wins - Pokémon Raffle. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com">Facebook</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>

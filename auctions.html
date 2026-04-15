@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Auctions - Vivid Wins Pokémon Raffle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 100%);
+        }
+
+        header {
+            background: #1F2937;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .page-title {
+            background: #1F2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: bold;
+            color: #1F2937;
+        }
+
+        .filter-group select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .auctions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .auction-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .auction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .auction-image {
+            background: linear-gradient(135deg, #FFD700, #FF6B6B);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .auction-content {
+            padding: 1.5rem;
+        }
+
+        .auction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .auction-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1F2937;
+            flex: 1;
+        }
+
+        .status-badge {
+            background: #10B981;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .status-badge.almost-full {
+            background: #F59E0B;
+        }
+
+        .status-badge.sold-out {
+            background: #EF4444;
+        }
+
+        .prize-value {
+            font-size: 1.8rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .auction-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #EEE;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #999;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: #1F2937;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #EEE;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FF6B6B);
+            transition: width 0.3s;
+        }
+
+        .spots-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            width: 100%;
+            background: #FFD700;
+            color: #1F2937;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #FFC700;
+        }
+
+        .cta-button:disabled {
+            background: #CCC;
+            cursor: not-allowed;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        .empty-state emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #1F2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-group select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎮 Vivid Wins</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-title">
+        <h1>🔥 Live Auctions</h1>
+        <p>Check out our current raffles - grab your spots before they're gone!</p>
+    </section>
+
+    <div class="container">
+        <div class="filters">
+            <div class="filter-group">
+                <label>Filter by Status:</label>
+                <select id="statusFilter" onchange="filterAuctions()">
+                    <option value="all">All Auctions</option>
+                    <option value="open">Open</option>
+                    <option value="almost-full">Almost Full</option>
+                    <option value="sold-out">Sold Out</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="auctions-grid" id="auctionsContainer">
+            <!-- Auctions will be loaded here via JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vivid Wins - Pokémon Raffle. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/people/VividWins/61572047675668/">Facebook</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // Sample auction data - replace with your actual data/API
+        const auctionsData = [
+            {
+                id: 1,
+                title: "Pokémon Booster Box - Base Set",
+                emoji: "📦",
+                prize: "£250",
+                totalSpots: 50,
+                soldSpots: 42,
+                pricePerSpot: "£5",
+                drawDate: "2026-04-20",
+                status: "almost-full",
+                automationId: "auction_001"
+            },
+            {
+                id: 2,
+                title: "Graded Charizard Card",
+                emoji: "🐉",
+                prize: "£500",
+                totalSpots: 25,
+                soldSpots: 0,
+                pricePerSpot: "£20",
+                drawDate: "2026-04-22",
+                status: "open",
+                automationId: "auction_002"
+            },
+            {
+                id: 3,
+                title: "Mystery Pokémon Bundle",
+                emoji: "🎁",
+                prize: "£180",
+                totalSpots: 30,
+                soldSpots: 30,
+                pricePerSpot: "£6",
+                drawDate: "2026-04-18",
+                status: "sold-out",
+                automationId: "auction_003"
+            },
+            {
+                id: 4,
+                title: "Vintage Pokémon Cards Lot",
+                emoji: "🃏",
+                prize: "£350",
+                totalSpots: 40,
+                soldSpots: 28,
+                pricePerSpot: "£8.75",
+                drawDate: "2026-04-25",
+                status: "open",
+                automationId: "auction_004"
+            }
+        ];
+
+        function renderAuctions(filter = 'all') {
+            const container = document.getElementById('auctionsContainer');
+
+            const filtered = filter === 'all'
+                ? auctionsData
+                : auctionsData.filter(a => a.status === filter);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1;">
+                        <div class="empty-state">
+                            <div class="empty-state emoji">🔍</div>
+                            <h3>No auctions found</h3>
+                            <p>Check back soon for more raffles!</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(auction => {
+                const percentage = (auction.soldSpots / auction.totalSpots) * 100;
+                const spotsRemaining = auction.totalSpots - auction.soldSpots;
+                const isDisabled = auction.status === 'sold-out';
+
+                return `
+                    <div class="auction-card" data-automation="${auction.automationId}">
+                        <div class="auction-image">${auction.emoji}</div>
+                        <div class="auction-content">
+                            <div class="auction-header">
+                                <div class="auction-title">${auction.title}</div>
+                                <div class="status-badge ${auction.status}">${auction.status.replace('-', ' ').toUpperCase()}</div>
+                            </div>
+
+                            <div class="prize-value">${auction.prize}</div>
+
+                            <div class="auction-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Price/Spot</span>
+                                    <span class="detail-value">${auction.pricePerSpot}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Draw Date</span>
+                                    <span class="detail-value">${new Date(auction.drawDate).toLocaleDateString()}</span>
+                                </div>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${percentage}%"></div>
+                            </div>
+                            <div class="spots-info">${auction.soldSpots}/${auction.totalSpots} spots sold • ${spotsRemaining} remaining</div>
+
+                            <button class="cta-button" ${isDisabled ? 'disabled' : ''} onclick="enterAuction('${auction.id}', '${auction.automationId}')">
+                                ${isDisabled ? 'SOLD OUT' : 'ENTER NOW'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterAuctions() {
+            const filter = document.getElementById('statusFilter').value;
+            renderAuctions(filter);
+        }
+
+        function enterAuction(auctionId, automationId) {
+            // Trigger automation webhook here
+            console.log(`Entering auction ${auctionId} - Automation ID: ${automationId}`);
+
+            // Example: Send to Facebook or automation service
+            alert(`Redirecting to Facebook to enter this auction!\n\nAutomation triggered: ${automationId}`);
+            window.open('https://www.facebook.com/people/VividWins/61572047675668/', '_blank');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAuctions();
+        });
+    </script>
+</body>
+</html>

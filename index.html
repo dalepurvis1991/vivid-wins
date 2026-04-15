@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Wins - Pokémon Raffle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 100%);
+        }
+
+        header {
+            background: #1F2937;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+        }
+
+        .cta-button {
+            background: #FFD700;
+            color: #1F2937;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #1F2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎮 Vivid Wins</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Vivid Wins</h1>
+            <p>The Pokémon Raffle - Your Chance to Win Big!</p>
+            <a href="https://www.facebook.com" class="cta-button">Join Our Facebook Community</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="features">
+            <div class="feature-card">
+                <div class="emoji">🎯</div>
+                <h3>Fair & Transparent</h3>
+                <p>All raffles are conducted fairly and transparently. Every entrant has an equal chance to win amazing Pokémon prizes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="emoji">🏆</div>
+                <h3>Epic Prizes</h3>
+                <p>Win rare Pokémon cards, collectibles, merchandise, and more. Check our Facebook page for current raffle details.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="emoji">⚡</div>
+                <h3>Easy Entry</h3>
+                <p>Simple steps to enter. Follow us on Facebook for raffle announcements and entry instructions.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vivid Wins - Pokémon Raffle. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com">Facebook</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>
