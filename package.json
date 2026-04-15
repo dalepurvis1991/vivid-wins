@@ -1,18 +1,5 @@
 {
   "name": "vivid-wins",
   "version": "1.0.0",
-  "description": "Pokémon Raffle Website - Vivid Wins",
-  "main": "index.html",
-  "scripts": {
-    "dev": "python -m http.server 8000",
-    "build": "echo 'Static site - no build step needed'"
-  },
-  "keywords": [
-    "pokemon",
-    "raffle",
-    "vivid-wins",
-    "auction"
-  ],
-  "author": "Vivid Wins",
-  "license": "MIT"
+  "description": "Pokémon Raffle Website - Vivid Wins"
 }
