@@ -390,8 +390,38 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', renderAuctions);
+                document.addEventListener('DOMContentLoaded', () => {
+            renderAuctions();
+            
+            // 3D Tilt Effect for Auctions
+            document.querySelector('.auctions-grid').addEventListener('mousemove', e => {
+                const card = e.target.closest('.auction-card');
+                if (!card) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xPct = x / rect.width - 0.5;
+                const yPct = y / rect.height - 0.5;
+                
+                // Add CSS inline if not present
+                if (!card.style.transformStyle) {
+                    card.style.transformStyle = 'preserve-3d';
+                    card.style.transition = 'none';
+                }
+                
+                card.style.transform = `perspective(1000px) rotateY(${xPct * 15}deg) rotateX(${-yPct * 15}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            document.querySelector('.auctions-grid').addEventListener('mouseout', e => {
+                const card = e.target.closest('.auction-card');
+                if (!card) return;
+                card.style.transition = 'transform 0.5s ease-out';
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+            });
+        });
     </script>
 <script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
 </body>
 </html>
+

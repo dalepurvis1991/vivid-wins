@@ -158,25 +158,29 @@
     <section class="seo-section" style="background: rgba(0,0,0,0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 5rem 2rem; max-width: 100% !important;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: left;">Upcoming Elite Draws</h2>
-            <p>Our upcoming roster of Pokémon competitions is stacked! With the soaring prices of vintage wizards of the coast (WOTC) era boxes and the extreme scarcity of exclusive Pokemon Center Elite Trainer Boxes, winning them for just a few pounds is the best way to grow your collection.</p>
+                        <p>Our upcoming roster of Pok�mon competitions is stacked! With the soaring prices of vintage wizards of the coast (WOTC) era boxes and the extreme scarcity of exclusive Pokemon Center Elite Trainer Boxes, winning them for just a few pounds is the best way to grow your collection.</p>
             
-            <div class="showcase-grid">
-                <div class="showcase-item">
-                    <img src="assets/img/booster_display_1776319258080.png" alt="Premium Display Boxes">
-                    <div class="showcase-content">
-                        <h3>Vintage Sealed Investment Case</h3>
-                        <p style="color: var(--text-secondary);">A stunning collection of highly sought-after sealed booster boxes from the early eras of Pokémon. Perfectly preserved.</p>
-                        <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; margin-top: 1rem;">View Current Draws ➔</a>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-item">
+                        <img src="assets/img/pokemon_case_1776334255901.png" alt="PSA Vault">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/elite_box_1776334268858.png" alt="Floating Elite Box">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/golden_ticket_1776334282458.png" alt="Golden Ticket">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/booster_display_1776319258080.png" alt="Premium Display">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/mystery_box_1776318066608.png" alt="Mystery Box">
                     </div>
                 </div>
-                <div class="showcase-item">
-                    <img src="assets/img/pikachu_plush_1776319272239.png" alt="Plush Treasury">
-                    <div class="showcase-content">
-                        <h3>The Pikachu Plush Treasury</h3>
-                        <p style="color: var(--text-secondary);">Looking for something cute? We frequently raffle monumental bundles of official Pokémon Center Japan plushies and merchandise.</p>
-                        <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; margin-top: 1rem;">View Current Draws ➔</a>
-                    </div>
-                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; font-size: 1.2rem;">Watch Current Draws Live ?</a>
             </div>
         </div>
     </section>
@@ -232,10 +236,53 @@
             document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
         }
 
-        setInterval(updateHeroCountdown, 1000);
+                setInterval(updateHeroCountdown, 1000);
         updateHeroCountdown();
+
+        // 3D Tilt Effect for modern feel
+        document.querySelectorAll('.feature-card, .tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xPct = x / rect.width - 0.5;
+                const yPct = y / rect.height - 0.5;
+                card.style.transform = `perspective(1000px) rotateY(${xPct * 20}deg) rotateX(${-yPct * 20}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                const img = card.querySelector('.feature-img');
+                if(img) {
+                    img.style.transform = `translateZ(30px) scale(1.1) rotate(${xPct * 10}deg)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+                const img = card.querySelector('.feature-img');
+                if(img) {
+                    img.style.transform = `translateZ(0px) scale(1) rotate(0deg)`;
+                }
+            });
+        });
+
+        // 3D Cover Flow Carousel Logic
+        const track = document.getElementById('carouselTrack');
+        const items = document.querySelectorAll('.carousel-item');
+        let currentAngle = 0;
+        const angleStep = 360 / items.length;
+
+        items.forEach((item, index) => {
+            const angle = index * angleStep;
+            item.style.transform = `rotateY(${angle}deg) translateZ(300px)`;
+        });
+
+        function rotateCarousel() {
+            currentAngle -= angleStep;
+            track.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        setInterval(rotateCarousel, 3000);
     </script>
 <script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
 </body>
 </html>
+
 
