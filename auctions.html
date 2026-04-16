@@ -3,320 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Auctions - Vivid Wins Pokémon Raffle</title>
+    <meta name="description" content="View all live Pokémon raffles, auctions, and competitions at Vivid Wins. Win rare trading cards, PSA and BGS graded slabs, and sealed ETBs. Grab your lucky numbers now!">
+    <title>Live Pokémon Auctions & Draws - Vivid Wins</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 100%);
-        }
-
-        header {
-            background: #1F2937;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        header nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #FFD700;
-        }
-
-        .page-title {
-            background: #1F2937;
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .page-title h1 {
-            font-size: 2.5rem;
-            color: #FFD700;
-            margin-bottom: 0.5rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .filters {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .filter-group label {
-            font-weight: bold;
-            color: #1F2937;
-        }
-
-        .filter-group select {
-            padding: 0.5rem 1rem;
-            border: 1px solid #DDD;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .auctions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .auction-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .auction-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-
-        .auction-image {
-            background: linear-gradient(135deg, #FFD700, #FF6B6B);
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .auction-content {
-            padding: 1.5rem;
-        }
-
-        .auction-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .auction-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #1F2937;
-            flex: 1;
-        }
-
-        .status-badge {
-            background: #10B981;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .status-badge.almost-full {
-            background: #F59E0B;
-        }
-
-        .status-badge.sold-out {
-            background: #EF4444;
-        }
-
-        .prize-value {
-            font-size: 1.8rem;
-            color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .auction-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #EEE;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-label {
-            font-size: 0.8rem;
-            color: #999;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
-        }
-
-        .detail-value {
-            font-size: 1.1rem;
-            color: #1F2937;
-            font-weight: bold;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #EEE;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FF6B6B);
-            transition: width 0.3s;
-        }
-
-        .spots-info {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .cta-button {
-            width: 100%;
-            background: #FFD700;
-            color: #1F2937;
-            padding: 1rem;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #FFC700;
-        }
-
-        .cta-button:disabled {
-            background: #CCC;
-            cursor: not-allowed;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: white;
-            border-radius: 10px;
-            color: #666;
-        }
-
-        .empty-state emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #1F2937;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .social-links {
-            margin: 1rem 0;
-        }
-
-        .social-links a {
-            color: #FFD700;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-
-            .page-title h1 {
-                font-size: 1.8rem;
-            }
-
-            .filters {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .filter-group select {
-                width: 100%;
-            }
-        }
+        .page-title { padding: 4rem 2rem 2rem; }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">🎮 Vivid Wins</div>
+            <a href="index.html" class="logo-container">
+                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Vivid Wins</span>
+            </a>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="auctions.html" class="active">Auctions</a></li>
                 <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="page-title">
-        <h1>🔥 Live Auctions</h1>
-        <p>Check out our current raffles - grab your spots before they're gone!</p>
+        <h1>🔥 Live Auctions & Raffles</h1>
+        <p>Check out our currently active Pokémon draws. Don't wait—spots fill up lightning fast!</p>
     </section>
 
     <div class="container">
@@ -324,95 +37,156 @@
             <div class="filter-group">
                 <label>Filter by Status:</label>
                 <select id="statusFilter" onchange="filterAuctions()">
-                    <option value="all">All Auctions</option>
+                    <option value="all">All Live Draws</option>
                     <option value="open">Open</option>
                     <option value="almost-full">Almost Full</option>
                     <option value="sold-out">Sold Out</option>
                 </select>
             </div>
+            <div class="filter-group" style="margin-left: auto;">
+                <label>Search:</label>
+                <input type="text" id="searchInput" onkeyup="filterAuctions()" placeholder="Search prizes..." style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; outline: none; font-family: 'Inter', sans-serif;">
+            </div>
         </div>
 
         <div class="auctions-grid" id="auctionsContainer">
-            <!-- Auctions will be loaded here via JavaScript -->
+            <!-- Auctions loaded via JS -->
+        </div>
+
+        <!-- SEO Bottom Content for Auctions -->
+        <section class="seo-section" style="padding: 3rem 0;">
+            <h2>How Our Pokémon Raffles Work</h2>
+            <p>Every auction listed above is a live, legitimate chance to win premium Pokémon collections. When you find an item you are interested in—such as a booster box or a graded card—simply click <strong>"View Details & Enter"</strong>.</p>
+            <p>You'll be directed securely to our verified Facebook community where you can claim your specific numbers for the draw. Once all spots are filled, we lock the draw and go LIVE on video! We use a mathematically secure true random number generator to pick the winner directly in front of the audience, ensuring absolute peak transparency.</p>
+            
+            <div class="highlight-box">
+                <strong>Tip:</strong> The "Almost Full" raffles are the ones that will be drawn the soonest! If you hate waiting, grab spots on those raffles to see the live draw within hours. 
+            </div>
+            
+            <h2>What Kinds of Pokémon Prizes Do We Pull?</h2>
+            <p>Our inventory is constantly rotating. On a typical week, you will see a mix of modern sealed investments (like Sword & Shield and Scarlet & Violet era Elite Trainer Boxes), vintage holographic singles from the 1999 Base Set, and insanely valuable graded PSA 10 alternate arts. Make sure to check this page daily as new stock is added!</p>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="auctionModal" onclick="if(event.target === this) closeModal()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2 id="modalTitle" style="color: var(--accent-yellow); font-size: 1.8rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Prize Title</h2>
+            <p id="modalStatus" class="status-badge" style="display: inline-block; margin-bottom: 1.5rem;"></p>
+            
+            <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                <img id="modalImage" src="" alt="Prize" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid var(--accent-orange);">
+                <div>
+                    <h3 id="modalPrize" style="font-size: 2.2rem; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 900; margin-bottom: 0.5rem;">£0</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Price per spot:</strong> <span id="modalSpotPrice" style="color: #fff;"></span></p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Spots Remaining:</strong> <span id="modalSpots" style="color: var(--accent-yellow); font-weight: bold;"></span></p>
+                </div>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
+                <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 0.5rem;">Time Left to Enter</p>
+                <div class="countdown-timer" style="margin: 0;">
+                    <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-hours" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Hrs</span></div>
+                    <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-mins" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Min</span></div>
+                    <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-secs" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Sec</span></div>
+                </div>
+            </div>
+
+            <button id="modalEnterBtn" class="cta-button" style="width: 100%; border-radius: 10px;">PROCEED TO FACEBOOK</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Vivid Wins - Pokémon Raffle. All rights reserved.</p>
+        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" onerror="this.style.display='none'">
+        <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://www.facebook.com/people/VividWins/61572047675668/">Facebook</a> |
+            <a href="https://www.facebook.com">Facebook</a>
+            <a href="auctions.html">Auctions</a>
+            <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact Us</a>
         </div>
     </footer>
 
     <script>
-        // Sample auction data - replace with your actual data/API
+        // Fake auctions data with dynamic countdowns
         const auctionsData = [
             {
                 id: 1,
-                title: "Pokémon Booster Box - Base Set",
-                emoji: "📦",
-                prize: "£250",
+                title: "Evolving Skies Booster Box - Sealed",
+                image: "assets/img/booster_display_1776319258080.png",
+                prize: "£450",
                 totalSpots: 50,
-                soldSpots: 42,
-                pricePerSpot: "£5",
-                drawDate: "2026-04-20",
+                soldSpots: 45,
+                pricePerSpot: "£9",
                 status: "almost-full",
-                automationId: "auction_001"
+                timeRemainingSeconds: 3600 // 1 hour
             },
             {
                 id: 2,
-                title: "Graded Charizard Card",
-                emoji: "🐉",
-                prize: "£500",
-                totalSpots: 25,
-                soldSpots: 0,
-                pricePerSpot: "£20",
-                drawDate: "2026-04-22",
+                title: "PSA 10 Base Set Charizard (Holo)",
+                image: "assets/img/charizard_card_1776318081991.png",
+                prize: "£850",
+                totalSpots: 100,
+                soldSpots: 35,
+                pricePerSpot: "£8.50",
                 status: "open",
-                automationId: "auction_002"
+                timeRemainingSeconds: 86400 * 2 // 2 days
             },
             {
                 id: 3,
-                title: "Mystery Pokémon Bundle",
-                emoji: "🎁",
+                title: "Ultimate Pikachu Plush Collection",
+                image: "assets/img/pikachu_plush_1776319272239.png",
                 prize: "£180",
                 totalSpots: 30,
                 soldSpots: 30,
                 pricePerSpot: "£6",
-                drawDate: "2026-04-18",
                 status: "sold-out",
-                automationId: "auction_003"
+                timeRemainingSeconds: 0
             },
             {
                 id: 4,
-                title: "Vintage Pokémon Cards Lot",
-                emoji: "🃏",
+                title: "Base Set Vintage Booster Pack",
+                image: "assets/img/mystery_box_1776318066608.png",
                 prize: "£350",
                 totalSpots: 40,
-                soldSpots: 28,
+                soldSpots: 38,
                 pricePerSpot: "£8.75",
-                drawDate: "2026-04-25",
+                status: "almost-full",
+                timeRemainingSeconds: 1800 // 30 mins
+            },
+            {
+                id: 5,
+                title: "Crown Zenith Elite Trainer Box (Set of 2)",
+                image: "assets/img/booster_display_1776319258080.png",
+                prize: "£120",
+                totalSpots: 20,
+                soldSpots: 5,
+                pricePerSpot: "£6",
                 status: "open",
-                automationId: "auction_004"
+                timeRemainingSeconds: 86400 // 1 day
             }
         ];
 
-        function renderAuctions(filter = 'all') {
+        let countdownInterval;
+
+        function renderAuctions() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const searchStr = document.getElementById('searchInput').value.toLowerCase();
             const container = document.getElementById('auctionsContainer');
 
-            const filtered = filter === 'all'
-                ? auctionsData
-                : auctionsData.filter(a => a.status === filter);
+            let filtered = auctionsData.filter(a => {
+                const statusMatch = statusFilter === 'all' || a.status === statusFilter;
+                const searchMatch = a.title.toLowerCase().includes(searchStr);
+                return statusMatch && searchMatch;
+            });
 
             if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div style="grid-column: 1/-1;">
-                        <div class="empty-state">
-                            <div class="empty-state emoji">🔍</div>
-                            <h3>No auctions found</h3>
-                            <p>Check back soon for more raffles!</p>
-                        </div>
+                    <div class="empty-state">
+                        <h3 style="font-size: 3rem; margin-bottom: 1rem;">🔍</h3>
+                        <h3>No auctions found</h3>
+                        <p style="color: var(--text-secondary);">Try adjusting your search filters!</p>
                     </div>
                 `;
                 return;
@@ -424,34 +198,22 @@
                 const isDisabled = auction.status === 'sold-out';
 
                 return `
-                    <div class="auction-card" data-automation="${auction.automationId}">
-                        <div class="auction-image">${auction.emoji}</div>
+                    <div class="auction-card">
+                        <div class="auction-image" style="background-image: url('${auction.image}')">
+                        </div>
                         <div class="auction-content">
                             <div class="auction-header">
                                 <div class="auction-title">${auction.title}</div>
-                                <div class="status-badge ${auction.status}">${auction.status.replace('-', ' ').toUpperCase()}</div>
+                                <div class="status-badge ${auction.status}">${auction.status.replace('-', ' ')}</div>
                             </div>
-
                             <div class="prize-value">${auction.prize}</div>
-
-                            <div class="auction-details">
-                                <div class="detail-item">
-                                    <span class="detail-label">Price/Spot</span>
-                                    <span class="detail-value">${auction.pricePerSpot}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Draw Date</span>
-                                    <span class="detail-value">${new Date(auction.drawDate).toLocaleDateString()}</span>
-                                </div>
-                            </div>
-
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: ${percentage}%"></div>
                             </div>
                             <div class="spots-info">${auction.soldSpots}/${auction.totalSpots} spots sold • ${spotsRemaining} remaining</div>
 
-                            <button class="cta-button" ${isDisabled ? 'disabled' : ''} onclick="enterAuction('${auction.id}', '${auction.automationId}')">
-                                ${isDisabled ? 'SOLD OUT' : 'ENTER NOW'}
+                            <button class="cta-button full-width" ${isDisabled ? 'disabled' : ''} onclick='openModal(${JSON.stringify(auction)})'>
+                                ${isDisabled ? 'SOLD OUT' : 'VIEW DETAILS & ENTER'}
                             </button>
                         </div>
                     </div>
@@ -460,23 +222,60 @@
         }
 
         function filterAuctions() {
-            const filter = document.getElementById('statusFilter').value;
-            renderAuctions(filter);
-        }
-
-        function enterAuction(auctionId, automationId) {
-            // Trigger automation webhook here
-            console.log(`Entering auction ${auctionId} - Automation ID: ${automationId}`);
-
-            // Example: Send to Facebook or automation service
-            alert(`Redirecting to Facebook to enter this auction!\n\nAutomation triggered: ${automationId}`);
-            window.open('https://www.facebook.com/people/VividWins/61572047675668/', '_blank');
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
             renderAuctions();
-        });
+        }
+
+        function openModal(auction) {
+            const modal = document.getElementById('auctionModal');
+            document.getElementById('modalTitle').innerText = auction.title;
+            const statusBadge = document.getElementById('modalStatus');
+            statusBadge.className = "status-badge " + auction.status;
+            statusBadge.innerText = auction.status.replace('-', ' ');
+            document.getElementById('modalImage').src = auction.image;
+            document.getElementById('modalPrize').innerText = auction.prize;
+            document.getElementById('modalSpotPrice').innerText = auction.pricePerSpot;
+            document.getElementById('modalSpots').innerText = auction.totalSpots - auction.soldSpots;
+            
+            const btn = document.getElementById('modalEnterBtn');
+            btn.onclick = function() {
+                alert("Redirecting securely to our Facebook Community Draw Room...");
+                window.open('https://www.facebook.com/people/VividWins/61572047675668/', '_blank');
+            };
+
+            // Setup countdown for this modal
+            clearInterval(countdownInterval);
+            let timeRemaining = auction.timeRemainingSeconds;
+
+            function updateTime() {
+                if (timeRemaining <= 0) {
+                    document.getElementById('m-hours').innerText = '00';
+                    document.getElementById('m-mins').innerText = '00';
+                    document.getElementById('m-secs').innerText = '00';
+                    clearInterval(countdownInterval);
+                    return;
+                }
+                const hrs = Math.floor(timeRemaining / 3600);
+                const mins = Math.floor((timeRemaining % 3600) / 60);
+                const secs = Math.floor(timeRemaining % 60);
+                
+                document.getElementById('m-hours').innerText = String(hrs).padStart(2, '0');
+                document.getElementById('m-mins').innerText = String(mins).padStart(2, '0');
+                document.getElementById('m-secs').innerText = String(secs).padStart(2, '0');
+                timeRemaining--;
+            }
+
+            updateTime();
+            countdownInterval = setInterval(updateTime, 1000);
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('auctionModal').classList.remove('active');
+            clearInterval(countdownInterval);
+        }
+
+        document.addEventListener('DOMContentLoaded', renderAuctions);
     </script>
 </body>
 </html>
