@@ -88,84 +88,6 @@
             <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
                 <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 0.5rem;">Time Left to Enter</p>
                 <div class="countdown-timer" style="margin: 0;">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo-container">
-                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
-                <span class="logo-text">Vivid Wins</span>
-            </a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="auctions.html" class="active">Auctions</a></li>
-                <li><a href="how-to-enter.html">How to Enter</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="page-title">
-        <h1>🔥 Live Auctions & Raffles</h1>
-        <p>Check out our currently active Pokémon draws. Don't wait—spots fill up lightning fast!</p>
-    </section>
-
-    <div class="container">
-        <div class="filters">
-            <div class="filter-group">
-                <label>Filter by Status:</label>
-                <select id="statusFilter" onchange="filterAuctions()">
-                    <option value="all">All Live Draws</option>
-                    <option value="open">Open</option>
-                    <option value="almost-full">Almost Full</option>
-                    <option value="sold-out">Sold Out</option>
-                </select>
-            </div>
-            <div class="filter-group" style="margin-left: auto;">
-                <label>Search:</label>
-                <input type="text" id="searchInput" onkeyup="filterAuctions()" placeholder="Search prizes..." style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; outline: none; font-family: 'Inter', sans-serif;">
-            </div>
-        </div>
-
-        <div class="auctions-grid" id="auctionsContainer">
-            <!-- Auctions loaded via JS -->
-        </div>
-
-        <!-- SEO Bottom Content for Auctions -->
-        <section class="seo-section" style="padding: 3rem 0;">
-            <h2>How Our Pokémon Raffles Work</h2>
-            <p>Every auction listed above is a live, legitimate chance to win premium Pokémon collections. When you find an item you are interested in—such as a booster box or a graded card—simply click <strong>"View Details & Enter"</strong>.</p>
-            <p>You'll be directed securely to our verified Facebook community where you can claim your specific numbers for the draw. Once all spots are filled, we lock the draw and go LIVE on video! We use a mathematically secure true random number generator to pick the winner directly in front of the audience, ensuring absolute peak transparency.</p>
-            
-            <div class="highlight-box">
-                <strong>Tip:</strong> The "Almost Full" raffles are the ones that will be drawn the soonest! If you hate waiting, grab spots on those raffles to see the live draw within hours. 
-            </div>
-            
-            <h2>What Kinds of Pokémon Prizes Do We Pull?</h2>
-            <p>Our inventory is constantly rotating. On a typical week, you will see a mix of modern sealed investments (like Sword & Shield and Scarlet & Violet era Elite Trainer Boxes), vintage holographic singles from the 1999 Base Set, and insanely valuable graded PSA 10 alternate arts. Make sure to check this page daily as new stock is added!</p>
-        </section>
-    </div>
-
-    <!-- Modals -->
-    <div class="modal-overlay" id="auctionModal" onclick="if(event.target === this) closeModal()">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <h2 id="modalTitle" style="color: var(--accent-yellow); font-size: 1.8rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Prize Title</h2>
-            <p id="modalStatus" class="status-badge" style="display: inline-block; margin-bottom: 1.5rem;"></p>
-            
-            <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
-                <img id="modalImage" src="" alt="Prize" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid var(--accent-orange);">
-                <div>
-                    <h3 id="modalPrize" style="font-size: 2.2rem; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 900; margin-bottom: 0.5rem;">£0</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Price per spot:</strong> <span id="modalSpotPrice" style="color: #fff;"></span></p>
-                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;"><strong>Spots Remaining:</strong> <span id="modalSpots" style="color: var(--accent-yellow); font-weight: bold;"></span></p>
-                </div>
-            </div>
-
-            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
-                <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 0.5rem;">Time Left to Enter</p>
-                <div class="countdown-timer" style="margin: 0;">
                     <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-hours" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Hrs</span></div>
                     <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-mins" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Min</span></div>
                     <div class="time-box" style="padding: 0.5rem; min-width: 60px;"><span class="num" id="m-secs" style="font-size: 1.5rem;">00</span><span class="label" style="font-size: 0.6rem;">Sec</span></div>
@@ -424,4 +346,5 @@
 <script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
 </body>
 </html>
+
 
