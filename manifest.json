@@ -1,0 +1,23 @@
+{
+  "name": "Vivid Wins Raffles",
+  "short_name": "Vivid Wins",
+  "description": "UK's #1 Pokémon Raffles and Prize Competitions",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

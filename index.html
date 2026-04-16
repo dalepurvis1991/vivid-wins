@@ -82,12 +82,13 @@
             margin-bottom: 0.5rem;
         }
     </style>
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
         <nav>
             <a href="index.html" class="logo-container">
-                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" onerror="this.style.display='none'">
+                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
                 <span class="logo-text">Vivid Wins</span>
             </a>
             <ul>
@@ -190,7 +191,7 @@
     </section>
 
     <footer>
-        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" onerror="this.style.display='none'">
+        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" >
         <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com">Facebook</a>
@@ -234,5 +235,7 @@
         setInterval(updateHeroCountdown, 1000);
         updateHeroCountdown();
     </script>
+<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
 </body>
 </html>
+

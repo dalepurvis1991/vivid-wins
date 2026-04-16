@@ -28,12 +28,13 @@
             line-height: 1.7;
         }
     </style>
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
         <nav>
             <a href="index.html" class="logo-container">
-                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" onerror="this.style.display='none'">
+                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
                 <span class="logo-text">Vivid Wins</span>
             </a>
             <ul>
@@ -95,6 +96,8 @@
                 <ul>
                     <li>You must be a follower of the Vivid Wins Facebook page.</li>
                     <li>Entrants must be 18+ years of age or possess explicit parental consent.</li>
+                    <li style="color: var(--accent-yellow);"><strong>Skill-Based Entry:</strong> To comply with UK Prize Competition regulations, participants must correctly answer a skill-based question to enter any draw.</li>
+                    <li style="color: var(--accent-yellow);"><strong>Free Postal Entry:</strong> To enter any draw for free, you may send your name, contact details, and the correct answer to the skill question via first-class post to our registered office (see Contact page) before the draw closes.</li>
                     <li>Numbers are distributed strictly on a first-come, first-served basis according to comment timestamps.</li>
                     <li>Payments must be cleared before the live draw initiates. Unpaid spots will be passed to backups.</li>
                     <li>Live draws will never be recorded beforehand—you will always see the draw happen live.</li>
@@ -105,7 +108,7 @@
 
             <h2 style="margin-top: 4rem;">Frequently Asked Questions (FAQ)</h2>
             <p style="color: var(--text-secondary); margin-bottom: 2rem;">New to Pokémon raffles? Here is everything you need to know about how we operate, how we source our products, and how you can join the fun.</p>
-            
+
             <div class="faq-accordion">
                 <div class="faq-item">
                     <div class="faq-question">Are the Pokémon cards and booster boxes authentic?</div>
@@ -132,7 +135,7 @@
     </div>
 
     <footer>
-        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" onerror="this.style.display='none'">
+        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" >
         <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com">Facebook</a>
@@ -141,5 +144,7 @@
             <a href="contact.html">Contact Us</a>
         </div>
     </footer>
+<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
 </body>
 </html>
+
