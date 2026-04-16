@@ -91,7 +91,10 @@
                 <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
                 <span class="logo-text">Vivid Wins</span>
             </a>
-            <ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="auctions.html">Auctions</a></li>
                 <li><a href="how-to-enter.html">How to Enter</a></li>
@@ -116,7 +119,7 @@
                 </div>
             </div>
 
-            <a href="https://www.facebook.com" class="cta-button">Join Our Facebook Community</a>
+            <a href="https://www.facebook.com/people/VividWins/61572047675668/" class="cta-button">Join Our Facebook Community</a>
         </div>
     </section>
 
@@ -158,8 +161,7 @@
     <section class="seo-section" style="background: rgba(0,0,0,0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 5rem 2rem; max-width: 100% !important;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: left;">Upcoming Elite Draws</h2>
-                        <p>Our upcoming roster of Pok�mon competitions is stacked! With the soaring prices of vintage wizards of the coast (WOTC) era boxes and the extreme scarcity of exclusive Pokemon Center Elite Trainer Boxes, winning them for just a few pounds is the best way to grow your collection.</p>
-            
+                        <p>Our upcoming roster of Pokémon competitions is stacked! With the soaring prices of vintage Wizards of the Coast (WOTC) era boxes and the extreme scarcity of exclusive Pokémon Center Elite Trainer Boxes, winning them for just a few pounds is the best way to grow your collection.</p>
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-item">
@@ -180,7 +182,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 1rem;">
-                <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; font-size: 1.2rem;">Watch Current Draws Live ?</a>
+                <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; font-size: 1.2rem;">Watch Current Draws Live →</a>
             </div>
         </div>
     </section>
@@ -198,7 +200,7 @@
         <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" >
         <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://www.facebook.com">Facebook</a>
+            <a href="https://www.facebook.com/people/VividWins/61572047675668/">Facebook</a>
             <a href="auctions.html">Auctions</a>
             <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact Us</a>
@@ -281,7 +283,19 @@
 
         setInterval(rotateCarousel, 3000);
     </script>
-<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
+<script>
+    if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+    }));
+</script>
 </body>
 </html>
 

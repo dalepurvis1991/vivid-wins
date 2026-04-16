@@ -37,7 +37,10 @@
                 <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
                 <span class="logo-text">Vivid Wins</span>
             </a>
-            <ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="auctions.html">Auctions</a></li>
                 <li><a href="how-to-enter.html" class="active">How to Enter</a></li>
@@ -129,7 +132,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://www.facebook.com" class="cta-button">🎯 View Raffles on Facebook</a>
+                <a href="https://www.facebook.com/people/VividWins/61572047675668/" class="cta-button">🎯 View Raffles on Facebook</a>
             </div>
         </div>
     </div>
@@ -138,13 +141,25 @@
         <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" >
         <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://www.facebook.com">Facebook</a>
+            <a href="https://www.facebook.com/people/VividWins/61572047675668/">Facebook</a>
             <a href="auctions.html">Auctions</a>
             <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact Us</a>
         </div>
     </footer>
-<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
+<script>
+    if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+    }));
+</script>
 </body>
 </html>
 
