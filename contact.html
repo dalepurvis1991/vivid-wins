@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vivid Wins Pokémon Raffle</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img">
+                <span class="logo-text">Vivid Wins</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-title">
+        <h1>Contact Us</h1>
+        <p>Get in touch - we'd love to hear from you!</p>
+    </section>
+
+    <div class="container">
+        <h2 style="color: var(--accent-yellow); margin-bottom: 1rem; border-bottom: 2px solid rgba(255,193,7,0.2); padding-bottom: 0.5rem; text-transform: uppercase;">Get In Touch</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="emoji">📧</div>
+                <h3>Email</h3>
+                <p>support@vivid-wins.co.uk</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="emoji">👥</div>
+                <h3>Facebook</h3>
+                <p><a href="https://www.facebook.com/vividwins26/">Message us on Facebook</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="emoji">⏰</div>
+                <h3>Response Time</h3>
+                <p>We aim to respond within 24-48 hours</p>
+            </div>
+        </div>
+
+        <div class="facebook-section">
+            <h3>📱 Fastest Way to Reach Us</h3>
+            <p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">For the quickest response about raffle entries and prize claims, <a href="https://www.facebook.com/vividwins26/">message us directly on Facebook</a>. We monitor our Facebook page throughout the day during raffle periods.</p>
+        </div>
+
+        <h2 style="color: var(--accent-yellow); margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid rgba(255,193,7,0.2); padding-bottom: 0.5rem; text-transform: uppercase;">Send us a Message</h2>
+        <div class="form-section">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                alert('Thanks for reaching out, ' + name + '! We\'ll get back to you soon. Please also follow our Facebook page for the fastest updates!');
+                this.reset();
+            });
+        </script>
+
+        <h2 style="color: var(--accent-yellow); margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid rgba(255,193,7,0.2); padding-bottom: 0.5rem; text-transform: uppercase;">FAQ</h2>
+        <div class="faq-box">
+            <h3>When are raffles held?</h3>
+            <p>Raffle schedules are announced on our Facebook page. Follow us to stay updated on upcoming events.</p>
+
+            <h3>How are winners selected?</h3>
+            <p>Winners are selected randomly and fairly. The selection process is transparent and announced on Facebook.</p>
+
+            <h3>What if I win?</h3>
+            <p>Winners are notified via Facebook. You'll have 7 days to respond and claim your prize. Contact us immediately if you've won!</p>
+        </div>
+    </div>
+
+    <footer>
+        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo">
+        <p>&copy; 2026 Vivid Wins - Pokémon Raffle. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/vividwins26/">Facebook</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+<script>
+    if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+    }));
+</script>
+</body>
+</html>
+

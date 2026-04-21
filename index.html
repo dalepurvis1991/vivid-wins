@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vivid Wins is the UK's premier Pokémon raffle and competition website. Win rare sealed booster boxes, graded Charizard cards, and epic Pokémon bundles daily! Join our community now.">
+    <title>Vivid Wins - UK's #1 Pokémon Raffles & Competitions</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .feature-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hero {
+            background-image: url('assets/img/hero_bg_1776318044667.png');
+        }
+
+        /* Home Page Specifics */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .showcase-grid { grid-template-columns: 1fr; }
+        }
+
+        .showcase-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .showcase-content {
+            padding: 1.5rem;
+        }
+
+        .showcase-content h3 {
+            color: var(--accent-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="assets/img/logo.png" alt="Vivid Wins" class="logo-img" >
+                <span class="logo-text">Vivid Wins</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="auctions.html">Auctions</a></li>
+                <li><a href="how-to-enter.html">How to Enter</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>EPIC POKÉMON PRIZE DRAWS!</h1>
+            <p>Your chance to win massive sealed collections, high-end graded slabs, and nostalgic vintage hits for just a few pounds!</p>
+            
+            <div style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 193, 7, 0.3); margin-bottom: 2rem; backdrop-filter: blur(5px);">
+                <h3 style="color: var(--accent-yellow); margin-bottom: 1rem; text-transform: uppercase;">Next Mega Draw Ends In:</h3>
+                <div class="countdown-timer" id="heroCountdown">
+                    <div class="time-box"><span class="num" id="cd-days">02</span><span class="label">Days</span></div>
+                    <div class="time-box"><span class="num" id="cd-hours">14</span><span class="label">Hours</span></div>
+                    <div class="time-box"><span class="num" id="cd-minutes">30</span><span class="label">Mins</span></div>
+                    <div class="time-box"><span class="num" id="cd-seconds">15</span><span class="label">Secs</span></div>
+                </div>
+            </div>
+
+            <a href="https://www.facebook.com/vividwins26/" class="cta-button">Join Our Facebook Community</a>
+        </div>
+    </section>
+
+    <!-- SEO Section 1: About -->
+    <section class="seo-section">
+        <h2>Welcome to the UK's Most Trusted Pokémon Competitions</h2>
+        <p>Vivid Wins is the ultimate destination for Pokémon Trading Card Game (TCG) enthusiasts. Whether you are hunting for vintage Base Set holos, the elusive Evolving Skies Moonbreon, or massively stacked modern booster boxes, we offer you the chance to win big without paying premium collector market prices.</p>
+        
+        <p>Our Pokémon raffles are fully transparent and incredibly easy to enter. With a thriving community of thousands of collectors on our Facebook group, we guarantee a safe, fully regulated environment where every single entrant has a completely equal, fair chance at winning life-changing Pokémon cards and sealed products.</p>
+        
+        <div class="highlight-box">
+            <strong>Why Choose Vivid Wins?</strong> We pride ourselves on the highest quality prizes. Every single graded slab is authenticated by PSA, BGS, or CGC. All sealed products are sourced directly from verified distributors. We never compromise on quality, because we are collectors just like you.
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="features">
+            <div class="glass-card feature-card">
+                <img src="assets/img/charizard_card_1776318081991.png" alt="Fair & Transparent" class="feature-img">
+                <h3>Fair & Transparent</h3>
+                <p>All raffles are conducted live securely using verified random number generators. Absolutely no hidden mechanics.</p>
+            </div>
+
+            <div class="glass-card feature-card">
+                <img src="assets/img/mystery_box_1776318066608.png" alt="Epic Prizes" class="feature-img">
+                <h3>Epic Prizes</h3>
+                <p>Win rare Pokémon cards, £500+ value sealed investments, merchandise, and incredible mystery loot bundles.</p>
+            </div>
+
+            <div class="glass-card feature-card">
+                <img src="assets/img/pikachu_plush_1776319272239.png" alt="Amazing Community" class="feature-img">
+                <h3>Amazing Community</h3>
+                <p>Join thousands of fellow Pokémon fans. Share your hits, trade your pulls, and celebrate wins together securely.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- SEO Section 2: Recent and Upcoming -->
+    <section class="seo-section" style="background: rgba(0,0,0,0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 5rem 2rem; max-width: 100% !important;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: left;">Upcoming Elite Draws</h2>
+                        <p>Our upcoming roster of Pokémon competitions is stacked! With the soaring prices of vintage Wizards of the Coast (WOTC) era boxes and the extreme scarcity of exclusive Pokémon Center Elite Trainer Boxes, winning them for just a few pounds is the best way to grow your collection.</p>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-item">
+                        <img src="assets/img/pokemon_case_1776334255901.png" alt="PSA Vault">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/elite_box_1776334268858.png" alt="Floating Elite Box">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/golden_ticket_1776334282458.png" alt="Golden Ticket">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/booster_display_1776319258080.png" alt="Premium Display">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/mystery_box_1776318066608.png" alt="Mystery Box">
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="auctions.html" style="color: var(--accent-orange); font-weight: bold; text-decoration: none; display: inline-block; font-size: 1.2rem;">Watch Current Draws Live →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Section 3: Final Call -->
+    <section class="seo-section" style="text-align: center;">
+        <h2>How To Join The Action</h2>
+        <p>Entering our raffles is incredibly simple. All of our draws are hosted directly through our established Facebook community. This allows us to keep operations completely transparent, stream the live winner selections, and instantly notify you if your numbers match the winning draw!</p>
+        <p>Don't miss out on the next big hit. Browse our open auctions, pick your lucky numbers, and secure your spot today before they sell out.</p>
+        <br>
+        <a href="auctions.html" class="cta-button">Browse Live Auctions</a>
+    </section>
+
+    <footer>
+        <img src="assets/img/logo.png" alt="Vivid Wins" class="footer-logo" >
+        <p>&copy; 2026 Vivid Wins - UK's #1 Pokémon Raffle. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/vividwins26/">Facebook</a>
+            <a href="auctions.html">Auctions</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Countdown Script
+        function updateHeroCountdown() {
+            const now = new Date().getTime();
+            // Set end date to exactly 2 days, 14 hours, 30 mins from page load conceptually
+            // For a persistent demo, we'll just fix a target date a few days in the future
+            let targetDate = localStorage.getItem('heroCountdownTarget');
+            
+            if (!targetDate || new Date(parseInt(targetDate)).getTime() < now) {
+                targetDate = now + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (30 * 60 * 1000) + (15 * 1000);
+                localStorage.setItem('heroCountdownTarget', targetDate.toString());
+            }
+
+            const distance = parseInt(targetDate) - now;
+
+            if (distance < 0) {
+                document.getElementById('heroCountdown').innerHTML = "<h3 style='color: var(--accent-orange)'>DRAW IS LIVE!</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+                setInterval(updateHeroCountdown, 1000);
+        updateHeroCountdown();
+
+        // 3D Tilt Effect for modern feel
+        document.querySelectorAll('.feature-card, .tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xPct = x / rect.width - 0.5;
+                const yPct = y / rect.height - 0.5;
+                card.style.transform = `perspective(1000px) rotateY(${xPct * 20}deg) rotateX(${-yPct * 20}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                const img = card.querySelector('.feature-img');
+                if(img) {
+                    img.style.transform = `translateZ(30px) scale(1.1) rotate(${xPct * 10}deg)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+                const img = card.querySelector('.feature-img');
+                if(img) {
+                    img.style.transform = `translateZ(0px) scale(1) rotate(0deg)`;
+                }
+            });
+        });
+
+        // 3D Cover Flow Carousel Logic
+        const track = document.getElementById('carouselTrack');
+        const items = document.querySelectorAll('.carousel-item');
+        let currentAngle = 0;
+        const angleStep = 360 / items.length;
+
+        items.forEach((item, index) => {
+            const angle = index * angleStep;
+            item.style.transform = `rotateY(${angle}deg) translateZ(300px)`;
+        });
+
+        function rotateCarousel() {
+            currentAngle -= angleStep;
+            track.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        setInterval(rotateCarousel, 3000);
+    </script>
+<script>
+    if('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+    }));
+</script>
+</body>
+</html>
+
+
